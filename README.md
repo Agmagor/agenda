@@ -1,4 +1,4 @@
 agenda
 ======
 
-Le cheval c'est g√nial
+Le cheval c'est g√©nial
