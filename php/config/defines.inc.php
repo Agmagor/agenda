@@ -1,10 +1,9 @@
 <?php
 
-if (!isset($_SERVER['DOCUMENT_ROOT'])) //Won't work with php-fpm
-    die();
+//if (!isset($_SERVER['DOCUMENT_ROOT'])) //Won't work with php-fpm
+//    die();
 
 $currentDir = dirname(__FILE__);
-
 
 //define('_PATH_', $_SERVER['DOCUMENT_ROOT'].'/');
 define('_PATH_', $currentDir.'/../');
