@@ -1,11 +1,13 @@
 <?php
 
-if (!isset($_SERVER['DOCUMENT_ROOT']))
-{
+if (!isset($_SERVER['DOCUMENT_ROOT'])) //Won't work with php-fpm
     die();
-}
 
-define('_PATH_', $_SERVER['DOCUMENT_ROOT'].'/');
+$currentDir = dirname(__FILE__);
+
+
+//define('_PATH_', $_SERVER['DOCUMENT_ROOT'].'/');
+define('_PATH_', $currentDir.'/../');
 
 define('_CLASSES_DIR_', _PATH_ . 'classes/');
 
