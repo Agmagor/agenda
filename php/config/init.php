@@ -1,7 +1,6 @@
 <?php
-
+@ini_set('display_errors', 'on');
 session_start();
-//header("Cache-Control: no-cache");
 
 require('defines.inc.php');
 require(_PATH_ . 'tools/smarty/Smarty.class.php');
@@ -17,7 +16,6 @@ foreach ($files as $filename)
     $bdd->query("SET NAMES UTF8");
 } catch (Exception $e)
 {
-    echo "Problème de connexion à la base de donnée PixyJob...";
     die();
 }*/
 
@@ -26,8 +24,9 @@ global $smarty;
 $smarty = new Smarty();
 $smarty->setCompileDir(_CACHE_DIR_.'smarty/compile');
 $smarty->setCacheDir(_CACHE_DIR_.'smarty/cache');
-$smarty->caching = false;
+$smarty->caching = true;
 $smarty->force_compile = false;
 $smarty->compile_check = true;
+$smarty->debugging_ctrl = 'URL';
 
 Context::getContext()->smarty = $smarty;

@@ -1,7 +1,9 @@
 <?php
 
 if (!isset($_SERVER['DOCUMENT_ROOT']))
+{
     die();
+}
 
 define('_PATH_', $_SERVER['DOCUMENT_ROOT'].'/');
 

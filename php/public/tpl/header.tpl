@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
             <title>Agenda Max</title>
-            <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+            <meta charset="utf-8">
             <link rel="stylesheet" href="/public/css/global.css" media="screen" />
             <!--<link rel="shortcut icon" href="/public/img/favicon.ico" />-->
             <link rel="shortcut icon" href="http://www.google.com/a/agmagor.be/images/favicon.ico" >
