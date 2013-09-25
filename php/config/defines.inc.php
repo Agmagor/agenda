@@ -16,6 +16,24 @@ define('_CONFIG_DIR_', _PATH_ . 'config/');
 
 define('_TPL_DIR_', _PATH_ . 'public/tpl/');
 
+define('_CSS_DIR_', _PATH_ . 'public/js/');
+
+define('_JS_DIR_', _PATH_ . 'public/img/');
+
+define('_IMG_DIR_', _PATH_ . 'public/img/');
+
 define('_LOGS_DIR_', _PATH_ . 'logs/');
 
 define ('_CACHE_DIR_', _PATH_ . 'cache/');
+
+//URIs
+
+define('_BASE_URI_', $_SERVER["HTTP_HOST"] . "/");
+
+define('_TPL_URI_', _BASE_URI_ . 'public/tpl/');
+
+define('_CSS_URI_', _BASE_URI_ . 'public/js/');
+
+define('_JS_URI_', _BASE_URI_ . 'public/img/');
+
+define('_IMG_URI_', _BASE_URI_ . 'public/img/');
