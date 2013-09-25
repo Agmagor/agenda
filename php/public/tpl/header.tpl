@@ -16,4 +16,10 @@
             <h1>
                 Ceci est notre header
             </h1>
+            <a href="" data-href="#groupe" data-width="50%" data-rel="choix_groupe" class="poplight">Choisis ton groupe</a>
+            <div id="choix_groupe" class="popup_block">
+                <h2>P. Corp</h2>
+        	    <p>ok</p>
+            </div>
+
         </header>
