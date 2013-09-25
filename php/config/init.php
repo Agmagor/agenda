@@ -2,6 +2,8 @@
 @ini_set('display_errors', 'on');
 session_start();
 
+define('_BASE_URI_', $_SERVER["HTTP_HOST"] . "/");
+
 require('defines.inc.php');
 require(_PATH_ . 'tools/smarty/Smarty.class.php');
 

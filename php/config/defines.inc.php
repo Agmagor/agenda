@@ -28,8 +28,6 @@ define ('_CACHE_DIR_', _PATH_ . 'cache/');
 
 //URIs
 
-define('_BASE_URI_', $_SERVER["HTTP_HOST"] . "/");
-
 define('_TPL_URI_', _BASE_URI_ . 'public/tpl/');
 
 define('_CSS_URI_', _BASE_URI_ . 'public/js/');
