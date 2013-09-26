@@ -6,9 +6,9 @@ class IndexController extends Controller
     {
         parent::__construct();
     }
-    public function run()
+    public function run($params)
     {
-        //$smarty = Context::getContext()->smarty;
+        parent::run($params);
         $this->smarty->assign('data', 'ohyeah');
         $this->smarty->display(_TPL_DIR_ . "index.tpl");
     }

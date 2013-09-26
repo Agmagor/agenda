@@ -6,8 +6,9 @@ class NotFoundController extends Controller
     {
         parent::__construct();
     }
-    public function run()
+    public function run($params)
     {
+        parent::run($params);
         $this->smarty->display(_TPL_DIR_ . "404.tpl");
     }
 }

@@ -6,9 +6,10 @@ class InfoController extends Controller
     {
         parent::__construct();
     }
-    public function run()
+    public function run($params)
     {
-        $this->smarty->assign("data", "Test controller");
+        parent::run($params);
+        $this->smarty->assign("data", "da da da");
         $this->smarty->display(_TPL_DIR_ . "info.tpl");
     }
 }

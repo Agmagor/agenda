@@ -12,4 +12,10 @@ class Controller {
             'js_dir'     =>  _JS_URI_
         ));
     }
+    
+    public function run($params)
+    {
+        if (isset($params[0]))
+            $this->smarty->assign("page_name", $params[0]);
+    }
 }
