@@ -2,8 +2,6 @@
 @ini_set('display_errors', 'on');
 session_start();
 
-define('_BASE_URI_', $_SERVER["HTTP_HOST"] . "/");
-
 require('defines.inc.php');
 require(_PATH_ . 'tools/smarty/Smarty.class.php');
 
@@ -26,7 +24,7 @@ global $smarty;
 $smarty = new Smarty();
 $smarty->setCompileDir(_CACHE_DIR_.'smarty/compile');
 $smarty->setCacheDir(_CACHE_DIR_.'smarty/cache');
-$smarty->caching = true;
+$smarty->caching = false;
 $smarty->force_compile = false;
 $smarty->compile_check = true;
 $smarty->debugging_ctrl = 'URL';

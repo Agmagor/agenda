@@ -28,6 +28,9 @@ define ('_CACHE_DIR_', _PATH_ . 'cache/');
 
 //URIs
 
+$base_uri = $_SERVER["HTTP_HOST"]; //Force $_SERVER init despite auto_globals_jit
+define('_BASE_URI_', $base_uri . "/");
+
 define('_TPL_URI_', _BASE_URI_ . 'public/tpl/');
 
 define('_CSS_URI_', _BASE_URI_ . 'public/js/');
