@@ -9,7 +9,7 @@ class InfoController extends Controller
     public function run($params)
     {
         parent::run($params);
-        $this->smarty->assign("data", "da da da");
+        $this->smarty->assign("data", $params['id']);
         $this->smarty->display(_TPL_DIR_ . "info.tpl");
     }
 }

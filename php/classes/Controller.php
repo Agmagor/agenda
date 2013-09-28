@@ -15,7 +15,7 @@ class Controller {
     
     public function run($params)
     {
-        if (isset($params[0]))
-            $this->smarty->assign("page_name", $params[0]);
+        if (isset($params['page_name']))
+            $this->smarty->assign("page_name", $params['page_name']);
     }
 }
