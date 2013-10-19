@@ -2,7 +2,7 @@
 class Context
 {
     public $smarty;
-    public static $instance;
+    protected static $instance;
     
     public static function getContext()
     {

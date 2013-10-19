@@ -1,9 +1,9 @@
 <?php
 class Router
 {
-    public static $instance = null;
-    public $default_controller = "IndexController";
-    public $notfound_controller = "NotFoundController";
+    protected static $instance = null;
+    protected $default_controller = "IndexController";
+    protected $notfound_controller = "NotFoundController";
 
     public $routes = array( //Rewrite Rules
         'info' => array(
