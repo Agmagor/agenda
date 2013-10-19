@@ -1,5 +1,15 @@
 $(document).ready(function() {
     $('#calendar').fullCalendar({
+        viewDisplay: function (view) {
+            var h;
+            if (view.name == "month") {
+                h = NaN;
+            }
+            else {
+                h = 2500;  // high enough to avoid scrollbars
+            }        
+            $('#calendar').fullCalendar('option', 'contentHeight', h);
+        },
         hiddenDays : [0],
         weekNumbers : true,
         dayClick: function(date, allDay, jsEvent, view) {
@@ -17,9 +27,28 @@ $(document).ready(function() {
             {
                 events : [
                     {
-                        title: "Manger Max",
-                        start: '2013-09-27 11:00:00',
-                        end: '2013-09-27 14:20:00',
+                        title: "Eau-No-Lo-Lo",
+                        start: '2013-10-09 11:00:00',
+                        end: '2013-10-09 14:20:00',
+                    },
+                ]
+            },
+            {
+                events : [
+                    {
+                        title: "Bosser projai",
+                        start: '2013-10-11 17:00:00',
+                        end: '2013-10-11 18:20:00',
+                        prof: 'test',
+                    },
+                ]
+            },
+            {
+                events : [
+                    {
+                        title: "\"pseudo-cours\"",
+                        start: '2013-10-11 14:20:00',
+                        end: '2013-10-11 17:15:00',
                     },
                 ]
             }
@@ -35,6 +64,9 @@ $(document).ready(function() {
             day: "Jour",
         },
         allDayDefault: false,
+        eventRender: function(event, element) {
+            element.click(function() { console.log(element); });
+        },
     });
     $("#calendar").fullCalendar('changeView', 'agendaWeek');
     
@@ -42,7 +74,7 @@ $(document).ready(function() {
 		var popID = $(this).data('rel');
 		var popWidth = $(this).data('width');
 
-		$('#' + popID).fadeIn().css({ 'width': popWidth}).prepend('<a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>');
+		$('#' + popID).fadeIn().css({ 'width': popWidth}).prepend('<a href="#" class="close"><img src="/public/img/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>');
 		
 		var popMargTop = ($('#' + popID).height() + 80) / 2;
 		var popMargLeft = ($('#' + popID).width() + 80) / 2;
