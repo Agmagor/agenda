@@ -68,7 +68,10 @@ $(document).ready(function() {
             element.click(function() { console.log(element); });
         },
     });
-    $("#calendar").fullCalendar('changeView', 'agendaWeek');
+    if (window.matchMedia("(max-width: 767px)").matches)
+        $("#calendar").fullCalendar('changeView', 'agendaDay');
+    else
+        $("#calendar").fullCalendar('changeView', 'agendaWeek');
     
 	$('a.poplight').on('click', function() {
 		var popID = $(this).data('rel');
