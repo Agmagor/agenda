@@ -4,17 +4,17 @@
 
 ###Client Side
 
-En plus de la regexp, vérification existence du calendrier
-Vérification connectivité
-Stocker le retour du parser en localStorage
-Y ajouter / mettre à jour les données retournées par le serveur
-Au click sur un événement, créer dynamiquement un pop up avec les données associées à l'uid de l'événement
-Pareil pour modifier un événement, utiliser TinyMCE ?
+* En plus de la regexp, vérification existence du calendrier
+* Vérification connectivité
+* Stocker le retour du parser en localStorage
+* Y ajouter / mettre à jour les données retournées par le serveur
+* Au click sur un événement, créer dynamiquement un pop up avec les données associées à l'uid de l'événement
+* Pareil pour modifier un événement, utiliser TinyMCE ?
 
 ###Server Side
 
-Doubler les fonctions Client Side à des fins de vérification
-Créer un schéma de base de données + tables
+* Doubler les fonctions Client Side à des fins de vérification
+* Créer un schéma de base de données + tables
 
 ##Synopsis
 
