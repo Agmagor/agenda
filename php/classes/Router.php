@@ -16,6 +16,10 @@ class Router
             'controller' => 'InfoController',
             'params' => array('id'),
         ),
+        '#api/getcalendar/([a-z]{1})([0-9]{1})([a-z]{2,6})#' => array(
+            'controller' => "GetCalendarController",
+            'params' => array('controller','usr'),
+        ),
     );
     
     public function dispatch($url)
