@@ -13,8 +13,6 @@ $(document).ready(function() {
             }
             else {
                 h = 2500;  // high enough to avoid scrollbars
-                //$("table.fc-agenda-slots td > div").height(Math.floor((700-50)/24)-1);
-                //cal.fullCalendar("render");
             }
             cal.fullCalendar('option', 'contentHeight', h);
         },
@@ -118,7 +116,18 @@ var Util = new (function Util() {  //Objet Util
         return false;
     };
     this.getCalendarURI = function (usr) {
-          return "http://edt.enib.fr/ics.php?username=" + usr + "&pass='" + btoa(usr) + "'";
+        return "http://edt.enib.fr/ics.php?username=" + usr + "&pass='" + btoa(usr) + "'";
+    };
+    this.checkCalendar = function (usr) { // won't work
+        $.ajax({
+            context: this,
+            type: 'HEAD',
+            url: this.getCalendarURI(usr)
+        }).done(function () {
+            return true;
+        }).fail(function () {
+            return false;
+        });
     };
 })();
 
@@ -138,10 +147,12 @@ var Agenda = new (function Agenda() {  //Objet Agenda
     };
     this.init = function () {
         var id = Browser.getData("id") || "p0baudry";
-        //var cal = $("#calendar");
         var data = JSON.parse(Browser.getData("feed"));
         if (!data || this.feedTooOld(data)) {
-            $.ajax({url:this.getCalendarFeed(id),context:this}).done(function (data) {
+            $.ajax({
+                url: this.getCalendarFeed(id),
+                context: this
+            }).done(function (data) {
                 if (data.error === 0) {
                     this.setFeed(JSON.stringify(data));
                     this.initCb();
@@ -152,7 +163,6 @@ var Agenda = new (function Agenda() {  //Objet Agenda
             this.initCb();
     };
     this.initCb = function () {
-        //var cal = $("#calendar");
         cal.fullCalendar("removeEvents");
         cal.fullCalendar("addEventSource", JSON.parse(this.getFeed()).data);
     };
@@ -215,5 +225,27 @@ var Browser = new (function Browser() {  //Objet Browser
     };
     this.eraseCookie = function (name) {
         createCookie(name,"",-1);
+    };
+})();
+
+var DBHelper = new (function DBHelper() {  //Objet Util
+    this.getUids = function () {
+        var res = [];
+        var feed = JSON.parse(Browser.getData("feed")).data;
+        for(i=0 ; i<feed.length ; i++)
+            res.push(feed[i].uid);
+        return res;
+    };
+    this.requestData = function (uids) {
+        var req = uids || this.getUids();
+        req = JSON.stringify(req);
+        $.ajax({
+            context: this,
+            datatype: "JSON",
+            url: "/api/getuids",
+            data: {uids: req}
+        }).success(function (data) {
+            console.log(data);
+        })
     };
 })();
