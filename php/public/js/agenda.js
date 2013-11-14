@@ -125,17 +125,11 @@ var Util = new (function Util() {  //Objet Util
         return "http://edt.enib.fr/ics.php?username=" + usr + "&pass='" + btoa(usr) + "'";
     };
     this.checkCalendar = function (usr) {
-        var error;
-        $.ajax({
+        return !JSON.parse($.ajax({
             context: this,
             url: "/api/checkcalendar/" + usr,
             async: false,
-        }).done(function (data) {
-            error = data.error;
-        });
-        if (error !== 0)
-            return false;
-        return true;
+        }).responseText).error;
     };
 })();
 
