@@ -20,6 +20,14 @@ class Router
             'controller' => "GetCalendarController",
             'params' => array('controller','usr'),
         ),
+        '#api/checkcalendar/([a-z]{1})([0-9]{1})([a-z]{2,6})#' => array(
+            'controller' => "CheckCalendarController",
+            'params' => array('controller','usr'),
+        ),
+        'api/eventdata/get' => array(
+            'controller' => "EventDataController",
+            'params' => array('controller','method'),
+        ),
     );
     
     public function dispatch($url)
