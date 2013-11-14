@@ -7,6 +7,12 @@ $(document).ready(function() {
                 cal.css("max-width","98%").css("min-width","700px");
                 $("table.fc-agenda-slots td > div").height((56560 - 25*cal.width()) / 868);
             }
+            if (view.name == "agendaDay") {
+                $(".fc-header").width("auto");
+                cal.css("width", "100%").css("max-width","").css("min-width","");
+                $("table.fc-agenda-slots td > div").height((56560 - 25*cal.width()) / 1236);
+                $("head").append('<meta name="viewport" content="width=device-width">');
+            }
             var h;
             if (view.name == "month") {
                 h = NaN;
@@ -100,7 +106,7 @@ $(document).ready(function() {
     $("#choix_groupe").submit(function (e) { //Connexion (on rentre son identifiant)
         e.preventDefault();
         var id = $("#idENIB").val();
-        if (Agenda.logIn(id)) {
+        if (Agenda.logIn(id.toLowerCase())) {
             Agenda.init();
             closePoplight();
         }
@@ -118,16 +124,18 @@ var Util = new (function Util() {  //Objet Util
     this.getCalendarURI = function (usr) {
         return "http://edt.enib.fr/ics.php?username=" + usr + "&pass='" + btoa(usr) + "'";
     };
-    this.checkCalendar = function (usr) { // won't work
+    this.checkCalendar = function (usr) {
+        var error;
         $.ajax({
             context: this,
-            type: 'HEAD',
-            url: this.getCalendarURI(usr)
-        }).done(function () {
-            return true;
-        }).fail(function () {
-            return false;
+            url: "/api/checkcalendar/" + usr,
+            async: false,
+        }).done(function (data) {
+            error = data.error;
         });
+        if (error !== 0)
+            return false;
+        return true;
     };
 })();
 
@@ -242,10 +250,18 @@ var DBHelper = new (function DBHelper() {  //Objet Util
         $.ajax({
             context: this,
             datatype: "JSON",
-            url: "/api/getuids",
-            data: {uids: req}
-        }).success(function (data) {
+            url: "/api/eventdata/get",
+            data: {request: req}
+        }).done(function (data) {
             console.log(data);
-        })
+            this.requestDataCb(data);
+        });
+    };
+    this.requestDataCb = function (data) {
+        $.each(data, function (key, val) {
+            var el = $("#" + val.uid);
+            var t = el.attr("title") || "";
+            el.attr("title", t + val.data + " || ");
+        });
     };
 })();

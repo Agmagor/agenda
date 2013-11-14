@@ -38,3 +38,10 @@ define('_CSS_URI_', _BASE_URI_ . 'public/css/');
 define('_JS_URI_', _BASE_URI_ . 'public/js/');
 
 define('_IMG_URI_', _BASE_URI_ . 'public/img/');
+
+//Database
+
+define('_DB_SERVER_', 'localhost');
+define('_DB_NAME_', 'agenda');
+define('_DB_USER_', 'agenda');
+define('_DB_PASSWD_', '');
